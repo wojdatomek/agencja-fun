@@ -1,0 +1,15 @@
+name = "agencja-fun"
+main = "src/worker.js"
+compatibility_date = "2026-08-23"
+
+# Dev: auto-deploy on push → agencja-fun-dev.wojdatomek.workers.dev
+[env.dev]
+name = "agencja-fun-dev"
+
+# Prod: on manual trigger → route on agencja.fun
+[env.production]
+name = "agencja-fun"
+routes = [
+  { pattern = "agencja.fun/*", zone_id = "6fec91fdd4edaf98891fab84bd60bb9d" },
+  { pattern = "www.agencja.fun/*", zone_id = "6fec91fdd4edaf98891fab84bd60bb9d" }
+]
