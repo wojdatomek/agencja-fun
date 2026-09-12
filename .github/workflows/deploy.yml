@@ -10,7 +10,7 @@ on:
       env:
         description: 'Deploy to:'
         required: true
-        default: 'dev'
+        default: 'production'
         type: choice
         options:
           - dev
@@ -25,23 +25,22 @@ jobs:
 
       - name: Deploy (dev)
         if: github.event_name == 'push' || inputs.env == 'dev'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v3.14
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           command: deploy --env dev
+          wranglerVersion: "4.126.0"
 
       - name: Deploy (production → agencja.fun)
-        if: inputs.env == 'production'
-        uses: cloudflare/wrangler-action@v3
+        if: github.event_name == 'push' || inputs.env == 'production'
+        uses: cloudflare/wrangler-action@v3.14
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           command: deploy --env production
+          wranglerVersion: "4.126.0"
 
       - name: Deployed URLs
         run: |
-          echo "## 🚀 Deployment complete!" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ inputs.env }}" == "production" ]; then
-            echo "**🌍 Production:** https://agencja.fun" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "**🧪 Dev:** https://agencja-fun-dev.wojdatomek.workers.dev" >> $GITHUB_STEP_SUMMARY
-          fi
+          echo "## Deployment complete" >> $GITHUB_STEP_SUMMARY
+          echo "**Production:** https://agencja.fun" >> $GITHUB_STEP_SUMMARY
+          echo "**Dev:** agencja-fun-dev (workers.dev)" >> $GITHUB_STEP_SUMMARY
