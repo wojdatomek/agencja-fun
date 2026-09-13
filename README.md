@@ -20,10 +20,7 @@ Hub w stylu Linktree: cztery duże drzwi, analityka, zero maila i telefonu.
 ## Analityka
 
 1. **Cloudflare Web Analytics** — włączone na strefie (`auto_install`), bez ciasteczek. Dashboard: Cloudflare → agencja.fun → Analytics → Web Analytics.
-2. **Google Analytics 4** — wyłączone, dopóki w `public/js/config.js` nie ma `gaId: "G-…"`.
-   - Załóż usługę GA4 na `agencja.fun`
-   - Wklej identyfikator do `config.js`
-   - Push. Banner zgody pojawia się sam. Zdarzenie: `select_content` z `item_id` (`muzyka`, `consulting`, `artykuly`, `media`, `media_ig`…).
+2. **Google Analytics 4** — `G-KE8PG4PMGB` w `public/js/config.js`. Banner zgody RODO; bez zgody skrypt Google się nie ładuje. Zdarzenie: `select_content` z `item_id` (`muzyka`, `consulting`, `artykuly`, `media`, `media_ig`…).
 
 Bez zgody skrypt Google się nie ładuje.
 
