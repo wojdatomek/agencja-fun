@@ -83,7 +83,8 @@
     yes.addEventListener("click", function () {
       save("yes"); close(); loadGA();
     });
-    yes.focus();
+    var coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+    if (!coarse) yes.focus();
   }
   if (no) no.addEventListener("click", function () {
     save("no"); close();
