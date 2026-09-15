@@ -219,6 +219,45 @@ img{display:block;max-width:100%}
   letter-spacing:-.02em;
 }
 
+.wrap--article{--w:560px}
+.article-meta{
+  color:var(--muted);
+  font-size:.78rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin:0 0 28px;
+}
+.wrap--article .prose{
+  color:rgba(239,230,216,.88);
+  font-size:1.04rem;
+  line-height:1.72;
+}
+.wrap--article .prose p+p{margin-top:16px}
+.wrap--article .prose h2{
+  font-size:1.28rem;
+  font-weight:800;
+  margin:36px 0 12px;
+  letter-spacing:-.03em;
+}
+.countdown{
+  font-family:var(--font-d);
+  font-weight:800;
+  font-size:1.35rem;
+  letter-spacing:.1em;
+  line-height:1.4;
+  margin:40px 0 8px;
+  color:var(--paper);
+}
+.lift-off{
+  font-family:var(--font-d);
+  font-weight:800;
+  font-size:1.7rem;
+  letter-spacing:.14em;
+  color:var(--accent);
+  margin:4px 0 0;
+}
+.wrap--article .card{margin-top:40px}
+
 .foot{
   margin-top:40px;
   display:flex;

@@ -2,3 +2,5 @@
 node_modules
 .dev.vars
 .DS_Store
+*.png.bak
+public/img/rakieta-juz-dymi-og.png

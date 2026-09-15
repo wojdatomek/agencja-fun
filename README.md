@@ -38,6 +38,8 @@ wrangler.toml
 
 Nowy artykuł = nowy katalog `public/artykuly/slug/index.html` + wpis w sitemapie.
 
+Szkice (nie produkcja): `drafts/artykuly/<slug>/`. Plan marketingowy: `docs/PLAN_MARKETING.md`. Nic z tych katalogów nie idzie na Worker, dopóki nie wpadnie do `public/`.
+
 ## Deploy
 
 ```bash
