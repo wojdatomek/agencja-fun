@@ -69,6 +69,16 @@ img{display:block;max-width:100%}
 }
 
 /* now / latest publication — one slot, not a fifth door */
+.now-wrap{margin-bottom:18px}
+button.now{
+  width:100%;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  appearance:none;
+  -webkit-appearance:none;
+}
 .now{
   display:grid;
   grid-template-columns:8px 1fr auto;
@@ -76,7 +86,6 @@ img{display:block;max-width:100%}
   align-items:center;
   min-height:96px;
   padding:18px 18px 18px 0;
-  margin-bottom:18px;
   border:1px solid rgba(212,87,42,.55);
   background:
     radial-gradient(120% 90% at 100% 0%, rgba(212,87,42,.28), transparent 58%),
@@ -145,6 +154,32 @@ img{display:block;max-width:100%}
   text-transform:uppercase;
   color:var(--accent);
   white-space:nowrap;
+}
+.now-player{
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  border:1px solid rgba(212,87,42,.55);
+  border-top:0;
+  background:#120e0c;
+  transition:max-height .4s ease, opacity .3s ease;
+}
+.now-wrap.is-open .now-player{
+  max-height:180px;
+  opacity:1;
+}
+.now-wrap.is-open .now{
+  animation:none;
+  border-bottom-color:transparent;
+}
+.now-player iframe{
+  display:block;
+  width:100%;
+  height:166px;
+  border:0;
+}
+@media (prefers-reduced-motion:reduce){
+  .now-player{transition:none}
 }
 .lang{
   position:fixed;

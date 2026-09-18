@@ -56,7 +56,8 @@
       consent_more: "Szczegóły w polityce prywatności",
       now_kicker: "Nowy track · SoundCloud",
       now_dek: "16.09.2026 · electronic · deep house",
-      now_cta: "Słuchaj ↗"
+      now_cta: "Słuchaj",
+      now_cta_close: "Zamknij"
     },
     en: {
       skip: "Skip to content",
@@ -109,7 +110,8 @@
       consent_more: "Details in the privacy policy",
       now_kicker: "New track · SoundCloud",
       now_dek: "16 Sep 2026 · electronic · deep house",
-      now_cta: "Listen ↗"
+      now_cta: "Listen",
+      now_cta_close: "Close"
     }
   };
 
@@ -161,6 +163,7 @@
       btn.textContent = t("lang_btn");
       btn.setAttribute("aria-label", t("lang_aria"));
     }
+    syncNowCta();
   }
 
   function injectLang() {
@@ -182,8 +185,74 @@
     document.body.appendChild(btn);
   }
 
+  function nowBtn() {
+    return document.querySelector(".now[data-embed]");
+  }
+
+  function syncNowCta() {
+    var btn = nowBtn();
+    if (!btn) return;
+    var cta = btn.querySelector(".now__cta");
+    if (!cta) return;
+    var open = btn.getAttribute("aria-expanded") === "true";
+    cta.textContent = t(open ? "now_cta_close" : "now_cta");
+  }
+
+  function scWidget(url, autoplay) {
+    var src = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(url)
+      + "&color=%23d4572a&auto_play=" + (autoplay ? "true" : "false")
+      + "&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false";
+    var f = document.createElement("iframe");
+    f.setAttribute("width", "100%");
+    f.setAttribute("height", "166");
+    f.setAttribute("scrolling", "no");
+    f.setAttribute("frameborder", "no");
+    f.setAttribute("allow", "autoplay");
+    f.title = "SoundCloud";
+    f.src = src;
+    return f;
+  }
+
+  function scMsg(iframe, method) {
+    if (!iframe || !iframe.contentWindow) return;
+    try {
+      iframe.contentWindow.postMessage(JSON.stringify({ method: method }), "https://w.soundcloud.com");
+    } catch (e) {}
+  }
+
+  function bindNow() {
+    var btn = nowBtn();
+    if (!btn) return;
+    var wrap = btn.closest(".now-wrap");
+    var panel = wrap && wrap.querySelector(".now-player");
+    var url = btn.getAttribute("data-embed");
+    if (!wrap || !panel || !url) return;
+
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") === "true";
+      if (open) {
+        btn.setAttribute("aria-expanded", "false");
+        wrap.classList.remove("is-open");
+        panel.setAttribute("aria-hidden", "true");
+        scMsg(panel.querySelector("iframe"), "pause");
+      } else {
+        btn.setAttribute("aria-expanded", "true");
+        wrap.classList.add("is-open");
+        panel.setAttribute("aria-hidden", "false");
+        var iframe = panel.querySelector("iframe");
+        if (!iframe) {
+          panel.appendChild(scWidget(url, true));
+        } else {
+          scMsg(iframe, "play");
+        }
+      }
+      syncNowCta();
+    });
+  }
+
   applyI18n();
   injectLang();
+  bindNow();
 
   function stored() {
     try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
