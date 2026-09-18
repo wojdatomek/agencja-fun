@@ -92,7 +92,7 @@ button.now{
     linear-gradient(180deg, rgba(212,87,42,.08), rgba(255,255,255,.015));
   box-shadow:0 0 0 1px rgba(212,87,42,.2), 0 0 18px rgba(212,87,42,.22), 0 14px 36px rgba(212,87,42,.1);
   color:var(--paper);
-  animation:now-glow 3.4s ease-in-out infinite;
+  animation:now-glow 6.8s ease-in-out infinite;
   transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 .now:hover,.now:focus-visible{
@@ -105,7 +105,7 @@ button.now{
   background:var(--accent);
   align-self:stretch;
   box-shadow:0 0 10px rgba(212,87,42,.65);
-  animation:now-bar 3.4s ease-in-out infinite;
+  animation:now-bar 6.8s ease-in-out infinite;
 }
 .now:hover .now__bar,.now:focus-visible .now__bar{animation:none;box-shadow:0 0 16px rgba(212,87,42,.9)}
 @keyframes now-glow{
@@ -484,4 +484,30 @@ html.consent-lock,body.consent-lock{overflow:hidden;touch-action:none}
 }
 @media (prefers-reduced-motion:reduce){
   .card,.card__go{transition:none}
+}
+
+.bg-mark{
+  position:fixed;
+  left:-6%;
+  bottom:-8%;
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
+  font-family:var(--font-d);
+  font-weight:800;
+  font-size:clamp(4.5rem, 22vw, 11rem);
+  letter-spacing:-.06em;
+  line-height:1;
+  color:rgba(239,230,216,.035);
+  white-space:nowrap;
+  transform:rotate(-9deg);
+  animation:bg-drift 32s ease-in-out infinite;
+}
+.bg-mark span{color:rgba(212,87,42,.09)}
+@keyframes bg-drift{
+  0%,100%{transform:rotate(-9deg) translate(0,0)}
+  50%{transform:rotate(-7.5deg) translate(2.4%, -1.6%)}
+}
+@media (prefers-reduced-motion:reduce){
+  .bg-mark{animation:none}
 }

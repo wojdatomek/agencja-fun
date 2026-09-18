@@ -178,11 +178,24 @@
       lang = lang === "pl" ? "en" : "pl";
       try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
       applyI18n();
+      if (typeof window.gtag === "function") {
+        window.gtag("set", "user_properties", { hub_lang: lang });
+        track("language_change");
+      }
       if (document.getElementById("consent") && document.getElementById("consent").classList.contains("is-on")) {
         renderConsent(document.getElementById("consent"));
       }
     });
     document.body.appendChild(btn);
+  }
+
+  function injectBgMark() {
+    if (document.querySelector(".bg-mark")) return;
+    var el = document.createElement("div");
+    el.className = "bg-mark";
+    el.setAttribute("aria-hidden", "true");
+    el.innerHTML = "agencja<span>.</span>fun";
+    document.body.appendChild(el);
   }
 
   function nowBtn() {
@@ -235,6 +248,7 @@
         wrap.classList.remove("is-open");
         panel.setAttribute("aria-hidden", "true");
         scMsg(panel.querySelector("iframe"), "pause");
+        track("now_close", { content_type: "audio", item_id: "pumpednfined", publication_type: "track" });
       } else {
         btn.setAttribute("aria-expanded", "true");
         wrap.classList.add("is-open");
@@ -245,6 +259,7 @@
         } else {
           scMsg(iframe, "play");
         }
+        track("now_open", { content_type: "audio", item_id: "pumpednfined", publication_type: "track" });
       }
       syncNowCta();
     });
@@ -252,6 +267,7 @@
 
   applyI18n();
   injectLang();
+  injectBgMark();
   bindNow();
 
   function stored() {
@@ -271,23 +287,42 @@
       anonymize_ip: true,
       send_page_view: true
     });
+    gtag("set", "user_properties", { hub_lang: lang });
     var s = document.createElement("script");
     s.async = true;
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA);
     document.head.appendChild(s);
   }
 
+  function hubSurface() {
+    var p = (location.pathname || "/").replace(/\/+$/, "") || "/";
+    if (p.indexOf("/artykuly") === 0) return "artykuly";
+    if (p.indexOf("/media") === 0) return "media";
+    if (p.indexOf("/consulting") === 0) return "consulting";
+    if (p.indexOf("/prywatnosc") === 0) return "prywatnosc";
+    return "home";
+  }
+
   function track(name, params) {
-    if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+    if (typeof window.gtag !== "function") return;
+    var payload = { hub_lang: lang, hub_surface: hubSurface() };
+    if (params) {
+      for (var k in params) {
+        if (Object.prototype.hasOwnProperty.call(params, k)) payload[k] = params[k];
+      }
+    }
+    window.gtag("event", name, payload);
   }
   window.agencjaTrack = track;
 
   document.addEventListener("click", function (e) {
     var el = e.target.closest("[data-track]");
     if (!el) return;
+    var id = el.getAttribute("data-track");
+    if (id === "now") return;
     track("select_content", {
       content_type: "hub_link",
-      item_id: el.getAttribute("data-track")
+      item_id: id
     });
   });
 
