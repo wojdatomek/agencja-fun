@@ -53,7 +53,10 @@
       consent_copy: "Pokazuje, które drzwi klikasz. Bez zgody strona działa tak samo — zero ciasteczek Google.",
       consent_yes: "Zgoda",
       consent_no: "Bez analityki",
-      consent_more: "Szczegóły w polityce prywatności"
+      consent_more: "Szczegóły w polityce prywatności",
+      now_kicker: "Nowy track · SoundCloud",
+      now_dek: "16.09.2026 · electronic · deep house",
+      now_cta: "Słuchaj ↗"
     },
     en: {
       skip: "Skip to content",
@@ -103,7 +106,10 @@
       consent_copy: "It shows which doors you tap. Without consent the site works the same — no Google cookies.",
       consent_yes: "Agree",
       consent_no: "No analytics",
-      consent_more: "Details in the privacy policy"
+      consent_more: "Details in the privacy policy",
+      now_kicker: "New track · SoundCloud",
+      now_dek: "16 Sep 2026 · electronic · deep house",
+      now_cta: "Listen ↗"
     }
   };
 
