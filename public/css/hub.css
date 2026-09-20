@@ -339,7 +339,18 @@ button.now{
   font-size:.78rem;
   letter-spacing:.14em;
   text-transform:uppercase;
+  margin:0 0 20px;
+}
+.article-hero{
   margin:0 0 28px;
+  border:1px solid var(--line);
+}
+.article-hero img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/9;
+  object-fit:cover;
 }
 .wrap--article .prose{
   color:rgba(239,230,216,.88);
