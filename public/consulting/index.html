@@ -51,18 +51,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/hub.css?v=consult1">
+<link rel="stylesheet" href="/css/hub.css?v=consult2">
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">Przejdź do treści</a>
-<main class="wrap" id="main">
+<main class="wrap wrap--offer" id="main">
   <a class="back" href="/" data-track="consulting_back">← agencja.fun</a>
   <p class="page-kicker" data-i18n="c_kicker">02 · consulting</p>
   <h1 class="page-title" data-i18n="c_h1">Consulting dla founderów</h1>
   <p class="page-lead" data-i18n="c_lead">Produkt i AI. Pierwsza godzina, 500 zł, maks. 1 h. Potem canvas albo cztery tygodnie. Piszesz — odpisuję na Telegramie. Maila tu nie ma.</p>
+  <p class="bio" data-i18n="c_bio">Doświadczony doradca biznesowy i CTO z silnym backgroundem technicznym. Specjalizuję się w transformowaniu innowacyjnych koncepcji w skalowalne modele biznesowe i rysuję jasną drogę rozwoju. Posiadam unikalną umiejętność łączenia głębokiej wiedzy technologicznej (AI, Mobile, R&D) z egzekucją biznesową: od strategii przez budżetowanie i budowanie zespołów, po skuteczny fundraising u globalnych graczy. Jako konsultant startupowy oferuję partnerstwo oparte na realnym doświadczeniu w budowaniu własnych projektów i doradztwie dla zewnętrznych founderów.</p>
+
+  <h2 class="sec-title" data-i18n="c_hi_h">Z drogi</h2>
+  <ul class="highlights">
+    <li data-i18n="c_hi_1">Charactr, CTO — zespół z 6 do 36. Mowa, STT, NLP.</li>
+    <li data-i18n="c_hi_2">Tediberry — 1,2 mln zł od VC. Pitching dla Universal, Warner, Sony.</li>
+    <li data-i18n="c_hi_3">iTwins — produkt dla agencji, 2017–2022.</li>
+    <li data-i18n="c_hi_4">MojAkademik — 6 lokalizacji, ponad 350 osób, exit w 2019.</li>
+    <li data-i18n="c_hi_5">GDG Poland od 2014. Network Speed Dating w Google for Startups.</li>
+  </ul>
 
   <h2 class="sec-title" id="pakiety" data-i18n="c_offers_h">Trzy pakiety</h2>
-  <div class="stack">
+  <div class="offers">
     <button class="offer offer--entry is-on" type="button" data-pack="hour" data-track="consulting_hour">
       <span class="card__idx">01</span>
       <span class="card__title" data-i18n="c_p1_name">Pierwsza konsultacja</span>
@@ -121,9 +131,13 @@
     </details>
   </div>
 
-  <h2 class="sec-title" id="pisz" data-i18n="c_form_h">Napisz</h2>
-  <p class="page-lead" data-i18n="c_form_d">Idzie na Telegram. Na stronie nie zostaje.</p>
-  <form class="consult-form" id="consult-form" action="/api/consulting" method="post">
+  <div class="ask" id="pisz">
+    <div>
+      <h2 class="sec-title" data-i18n="c_form_h">Napisz</h2>
+      <p class="page-lead" data-i18n="c_form_d">Idzie na Telegram. Na stronie nie zostaje.</p>
+    </div>
+    <div>
+    <form class="consult-form" id="consult-form" action="/api/consulting" method="post">
     <label><span data-i18n="c_f_name">Imię</span><input name="name" autocomplete="name" required></label>
     <label><span data-i18n="c_f_what">Co budujesz</span><input name="what" required></label>
     <label><span data-i18n="c_f_pack">Pakiet</span>
@@ -143,6 +157,8 @@
     <p class="card__title" data-i18n="c_done_h">Poszło.</p>
     <p class="page-lead" data-i18n="c_done_p">Jest na Telegramie. Odezwę się.</p>
   </div>
+    </div>
+  </div>
 
   <footer class="foot">
     <span>© 2026</span>
@@ -150,7 +166,7 @@
   </footer>
 </main>
 <script src="/js/config.js"></script>
-<script src="/js/hub.js?v=consult1"></script>
+<script src="/js/hub.js?v=consult2"></script>
 <script>
 (function () {
   var form = document.getElementById("consult-form");
