@@ -522,3 +522,112 @@ html.consent-lock,body.consent-lock{overflow:hidden;touch-action:none}
 @media (prefers-reduced-motion:reduce){
   .bg-mark{animation:none}
 }
+
+/* consulting room — titles stay .page-title / .card__title, do not widen them */
+.offer{
+  display:block;
+  width:100%;
+  text-align:left;
+  font:inherit;
+  color:inherit;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+  padding:16px 16px 14px;
+  margin:0;
+  cursor:pointer;
+}
+.offer--entry{border-color:rgba(212,87,42,.55)}
+.offer:hover,.offer:focus-visible,.offer.is-on{
+  background:var(--paper);
+  color:var(--ink);
+  border-color:var(--paper);
+}
+.offer:hover .card__sub,.offer:focus-visible .card__sub,.offer.is-on .card__sub,
+.offer:hover .offer__list,.offer:focus-visible .offer__list,.offer.is-on .offer__list{
+  color:rgba(11,10,9,.58);
+}
+.offer .card__idx{display:block;margin-bottom:8px}
+.offer .card__title{display:block}
+.offer .card__sub{display:block;margin-top:4px}
+.offer__price{
+  display:block;
+  margin:12px 0 8px;
+  font-family:var(--font-d);
+  font-weight:700;
+  font-size:1.18rem;
+  letter-spacing:-.03em;
+  line-height:1.15;
+}
+.offer__list{
+  list-style:none;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.4;
+}
+.offer__list li{margin-top:6px;padding-left:12px;position:relative}
+.offer__list li::before{
+  content:"";
+  position:absolute;
+  left:0;top:.55em;
+  width:6px;height:1px;
+  background:var(--accent);
+}
+.sec-title{
+  font-family:var(--font-d);
+  color:var(--paper);
+  font-size:1.15rem;
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin:32px 0 10px;
+}
+.consult-form{margin-top:8px}
+.consult-form label{
+  display:block;
+  margin:0 0 12px;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.consult-form input,.consult-form select,.consult-form textarea{
+  display:block;
+  width:100%;
+  margin-top:6px;
+  font:inherit;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--paper);
+  background:transparent;
+  border:1px solid var(--line-strong);
+  padding:12px;
+  min-height:48px;
+}
+.consult-form textarea{min-height:96px;resize:vertical}
+.consult-form input:focus,.consult-form select:focus,.consult-form textarea:focus{
+  outline:1px solid var(--accent);
+  border-color:var(--accent);
+}
+.consult-form .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 18px;
+  border:0;
+  cursor:pointer;
+  background:var(--accent);
+  color:var(--ink);
+  font-family:var(--font-d);
+  font-weight:700;
+  font-size:.95rem;
+  letter-spacing:.02em;
+}
+.consult-form .btn:disabled{opacity:.6;cursor:wait}
+.consult-err{color:var(--accent);font-size:.88rem;min-height:1.2em;margin:0 0 10px;letter-spacing:0;text-transform:none}
+.consult-done{display:none;border:1px solid rgba(212,87,42,.55);padding:18px 16px;margin-top:8px}
+.consult-done.is-on{display:block}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.faq details{border-top:1px solid var(--line);padding:12px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-family:var(--font-d);font-weight:700;font-size:1.18rem;letter-spacing:-.03em}
+.faq details p{color:var(--muted);margin-top:8px;line-height:1.5;font-size:.95rem}
