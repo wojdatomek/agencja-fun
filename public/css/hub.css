@@ -526,13 +526,30 @@ html.consent-lock,body.consent-lock{overflow:hidden;touch-action:none}
 /* consulting offer — wide room; hub home stays 440px */
 .wrap--offer{--w:960px}
 .wrap--offer .page-lead{max-width:62ch}
-.bio{
-  max-width:68ch;
-  margin:0 0 8px;
-  color:rgba(239,230,216,.88);
-  font-size:1.05rem;
-  line-height:1.65;
+.bio-row{
+  display:grid;
+  grid-template-columns:108px 1fr;
+  gap:18px;
+  align-items:start;
+  margin:18px 0 8px;
+  max-width:72ch;
 }
+.bio-row img{
+  width:108px;height:108px;border-radius:50%;
+  object-fit:cover;
+  border:1px solid var(--line-strong);
+}
+.bio-row figcaption{
+  margin-top:8px;
+  text-align:center;
+  font-family:var(--font-d);
+  font-weight:700;
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.bio-row .bio{margin:0;max-width:none;color:rgba(239,230,216,.88);font-size:1.05rem;line-height:1.65}
 .offers{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -563,6 +580,8 @@ html.consent-lock,body.consent-lock{overflow:hidden;touch-action:none}
 .ask .sec-title{margin-top:0}
 @media (max-width:800px){
   .wrap--offer{width:min(960px, calc(100% - 32px))}
+  .bio-row{grid-template-columns:72px 1fr;gap:12px}
+  .bio-row img{width:72px;height:72px}
   .offers,.highlights,.ask{grid-template-columns:1fr}
   .offer{min-height:0}
 }

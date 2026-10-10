@@ -13,7 +13,7 @@
       music: "Muzyka & DJ",
       music_sub: "deep / melodic / tribal house · booking",
       consulting: "Startupy & Consulting",
-      consulting_sub: "pierwsza godzina · 500 zł",
+      consulting_sub: "konsultacje startupowe, budżety, strategie",
       soon: "wkrótce",
       articles: "Artykuły",
       articles_sub: "teksty, notatki, process",
@@ -39,7 +39,7 @@
       c_kicker: "02 · consulting",
       c_h1: "Consulting dla founderów",
       c_lead: "Produkt i AI. Pierwsza godzina, 500 zł, maks. 1 h. Potem canvas albo cztery tygodnie. Piszesz — odpisuję na Telegramie. Maila tu nie ma.",
-      c_bio: "Doświadczony doradca biznesowy i CTO z silnym backgroundem technicznym. Specjalizuję się w transformowaniu innowacyjnych koncepcji w skalowalne modele biznesowe i rysuję jasną drogę rozwoju. Posiadam unikalną umiejętność łączenia głębokiej wiedzy technologicznej (AI, Mobile, R&D) z egzekucją biznesową: od strategii przez budżetowanie i budowanie zespołów, po skuteczny fundraising u globalnych graczy. Jako konsultant startupowy oferuję partnerstwo oparte na realnym doświadczeniu w budowaniu własnych projektów i doradztwie dla zewnętrznych founderów.",
+      c_bio: "Doradca i CTO. Wczesny pomysł zamieniam w model, który da się skalować: AI, mobile, R&D — strategia, budżet, zespół, fundraising. Z własnych projektów i z pracy z innymi founderami.",
       c_hi_h: "Z drogi",
       c_hi_1: "Charactr, CTO — zespół z 6 do 36. Mowa, STT, NLP.",
       c_hi_2: "Tediberry — 1,2 mln zł od VC. Pitching dla Universal, Warner, Sony.",
@@ -102,7 +102,7 @@
       hub: "Hub",
       consent_kicker: "Analityka",
       consent_title: "Zgoda na Google Analytics",
-      consent_copy: "Pokazuje, które drzwi klikasz. Bez zgody strona działa tak samo — zero ciasteczek Google.",
+      consent_copy: "Zgoda jest mi pomocna. Widzę, które drzwi klikasz. Bez niej strona działa tak samo.",
       consent_yes: "Zgoda",
       consent_no: "Bez analityki",
       consent_more: "Szczegóły w polityce prywatności",
@@ -119,7 +119,7 @@
       music: "Music & DJ",
       music_sub: "deep / melodic / tribal house · booking",
       consulting: "Startups & Consulting",
-      consulting_sub: "first hour · 500 PLN",
+      consulting_sub: "startup consulting, budgets, strategy",
       soon: "soon",
       articles: "Articles",
       articles_sub: "writing, notes, process",
@@ -145,7 +145,7 @@
       c_kicker: "02 · consulting",
       c_h1: "Consulting for founders",
       c_lead: "Product and AI. First hour, 500 PLN, max 1 h. Then a canvas, or four weeks. You write. I answer on Telegram. No public email.",
-      c_bio: "A business advisor and CTO with a strong technical background. I turn early ideas into models that can scale, and I draw a clear path for them. I join deep tech — AI, mobile, R&D — with the business work: strategy, budget, teams, and fundraising with people who actually write checks. The partnership comes from building my own projects, and from advising other founders.",
+      c_bio: "Advisor and CTO. I turn an early idea into a model that can scale: AI, mobile, R&D — strategy, budget, team, fundraising. From my own projects, and from work with other founders.",
       c_hi_h: "From the road",
       c_hi_1: "Charactr, CTO — the team grew from 6 to 36. Speech, STT, NLP.",
       c_hi_2: "Tediberry — 1.2 million PLN from a VC. Pitches to Universal, Warner, Sony.",
@@ -208,7 +208,7 @@
       hub: "Hub",
       consent_kicker: "Analytics",
       consent_title: "Google Analytics consent",
-      consent_copy: "It shows which doors you tap. Without consent the site works the same — no Google cookies.",
+      consent_copy: "Consent helps me. I see which doors you tap. Without it the site works the same.",
       consent_yes: "Agree",
       consent_no: "No analytics",
       consent_more: "Details in the privacy policy",
@@ -294,6 +294,8 @@
   }
 
   function injectBgMark() {
+    var path = (location.pathname || "/").replace(/\/+$/, "") || "/";
+    if (path !== "/") return;
     if (document.querySelector(".bg-mark")) return;
     var el = document.createElement("div");
     el.className = "bg-mark";

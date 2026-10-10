@@ -49,6 +49,18 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === "/api/consulting" && request.method === "POST") {
+      const origin = request.headers.get("origin") || "";
+      const referer = request.headers.get("referer") || "";
+      const fromSite =
+        origin === "https://agencja.fun" ||
+        origin === "https://www.agencja.fun" ||
+        referer.startsWith("https://agencja.fun/") ||
+        referer.startsWith("https://www.agencja.fun/");
+      if (!fromSite) return json({ success: false }, 403);
+
+      const len = Number(request.headers.get("content-length") || "0");
+      if (len > 12000) return json({ success: false }, 413);
+
       const ct = request.headers.get("content-type") || "";
       const wantsHtml = ct.indexOf("application/json") === -1;
       let data = {};
